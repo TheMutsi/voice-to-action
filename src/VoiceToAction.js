@@ -2,8 +2,7 @@ import Voice from '@react-native-voice/voice';
 import React, {Component} from 'react';
 import Tts from 'react-native-tts';
 import RNShake from 'react-native-shake';
-import {es} from '../../../i18n/es';
-import {useIsFocused} from '@react-navigation/core';
+import {es} from './i18n/es';
 
 const LANGUAGE = 'es-ES';
 const LANGUAGE_RECOGNITION = 'es-AR';
@@ -238,9 +237,9 @@ class BlindMenuComponent extends Component {
 }
 
 const BlindMenuComponentWrapper = params => {
-  const isFocused = useIsFocused();
-  if (!isFocused) return params.children;
-  return <BlindMenuComponent {...params} removeListener={!isFocused} />;
+
+  if (!params.isFocused) return params.children;
+  return <BlindMenuComponent {...params} removeListener={!params.isFocused} />;
 };
 
 export default BlindMenuComponentWrapper;
